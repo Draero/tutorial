@@ -1,3 +1,10 @@
-<ul>
-    <app-user *ngFor = "let user of users" [nameUser]="user"></app-user>
-</ul>  
+<div>
+    <p>name: {{name}}</p>
+    <p>Street: {{address.street}}</p>
+    <p>City: {{address.city}}</p>
+    <ul>
+        <li *ngFor="let hobby of hobbies">
+            {{hobby}}
+        </li>
+    </ul>
+</div>
