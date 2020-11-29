@@ -1,27 +1,35 @@
 import { Component } from '@angular/core';
 
+import { DataService } from './data.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // title = 'tutorial';
-  // users = ['rafael', 'miguel', 'don', 'leonardo', 'splinter']
-  name: string = "Ryan Ray";
-  age: number | undefined;
-  address: {
-    street: string;
-    city: string;
-  };
-  hobbies: string[];
+  
+  name: string='Jhon Carter';
+  age: number=28;
+  users: string[] = ['Ryan', 'Joe', 'Cameron'];
+  posts = Array();
 
-  constructor(){
-    this.age = 28;
-    this.address = {
-      street: '221B Baker Street',
-      city: 'London'
+  constructor(private dataservice: DataService){
+    this.dataservice.getData().subscribe(data => {
+        this.posts = data;
+    });
+  }
+
+  addUser(newUser:any){
+    this.users.push(newUser.value);
+    return false;
+  }
+
+  deleteUser(user:string){
+    for (let i=0; i<this.users.length; i++){
+      if(user == this.users[i]){
+        this.users.splice(i,1);
+      }
     }
-    this.hobbies = ['swimming', 'read', 'write']; 
   }
 }

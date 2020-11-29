@@ -1,10 +1,25 @@
+<form (submit)="addUser(newUser)">
+    <input type="text" #newUser>
+    <button>Send user</button>
+</form>
+
+<ul>
+    <li *ngFor='let user of users'>
+        {{user}} <button (click)='deleteUser(user)'>X</button>
+    </li>
+</ul>
+
 <div>
-    <p>name: {{name}}</p>
-    <p>Street: {{address.street}}</p>
-    <p>City: {{address.city}}</p>
-    <ul>
-        <li *ngFor="let hobby of hobbies">
-            {{hobby}}
-        </li>
-    </ul>
+    <form action="">
+        <input type="text" name="name" [(ngModel)]="name">
+        <input type="text" name="age" [(ngModel)]="age">
+    </form>
+    Name: {{name}} <br>
+    Age: {{age}}
+</div>
+
+<hr>
+<div *ngFor="let post of posts">
+    <h3>{{post.title}}</h3>
+    <p>{{post.body}}</p>
 </div>
